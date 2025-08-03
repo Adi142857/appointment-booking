@@ -1,12 +1,12 @@
 # 🩺 Doctor Appointment Booking System
 
-NestJS backend system for managing doctor appointments with PostgreSQL.
+NestJS backend system for managing doctor appointments with SQLite database.
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js (v16+)
-- PostgreSQL (v12+)
+- No additional database setup required (uses SQLite)
 
 ### Installation
 
@@ -15,23 +15,18 @@ NestJS backend system for managing doctor appointments with PostgreSQL.
    npm install
    ```
 
-2. **Setup environment**
+2. **Setup environment** (optional)
    ```bash
    cp env.example .env
-   # Update .env with your PostgreSQL credentials
+   # Update .env if needed (defaults work with SQLite)
    ```
 
-3. **Create database**
-   ```sql
-   CREATE DATABASE doctor_appointments;
-   ```
-
-4. **Start application**
+3. **Start application**
    ```bash
    npm run start:dev
    ```
 
-5. **Seed database**
+4. **Seed database** (optional)
    ```bash
    npm run seed
    ```
@@ -64,6 +59,10 @@ NestJS backend system for managing doctor appointments with PostgreSQL.
 ## 🧪 Testing
 
 ```bash
+# Run the test script
+node test-app.js
+
+# Or use curl commands
 # Create doctor
 curl -X POST http://localhost:3000/api/v1/doctors \
   -H "Content-Type: application/json" \
@@ -75,11 +74,19 @@ curl -X POST http://localhost:3000/api/v1/appointments \
   -d '{"doctorId":"DOCTOR_ID","patientFirstName":"Jane","patientLastName":"Smith","patientEmail":"jane@email.com","patientPhone":"+1-555-0200","appointmentDate":"2024-01-15","startTime":"10:00"}'
 ```
 
+## 🗄️ Database
+
+The application uses **SQLite** for simplicity and ease of development:
+- Database file: `database.sqlite`
+- Auto-created on first run
+- No additional setup required
+- Perfect for development and small-scale deployments
+
 ## 🏗️ Architecture
 
 - **NestJS** - Framework
 - **TypeORM** - Database ORM
-- **PostgreSQL** - Database
+- **SQLite** - Database (file-based)
 - **Class-validator** - Validation
 - **Clean Architecture** - Modular design
 
